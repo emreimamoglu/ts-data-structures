@@ -1,8 +1,8 @@
-class LinkNode<T>{
+export class LinkNode<T>{
     constructor(public data: T, public next?: LinkNode<T>) { }
 }
 
-class LinkedList<T>{
+export class LinkedList<T>{
     private size: number = 0;
     constructor(private head: LinkNode<T>, private tail: LinkNode<T>) {
         this.size++;
@@ -71,7 +71,6 @@ class LinkedList<T>{
         return undefined;
     }
 }
-
 
 /***************************************************************************************************************/
 

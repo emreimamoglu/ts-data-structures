@@ -11,6 +11,7 @@ export class DoublyLinkedList<T>{
     }
 
     public getSize = (): number => this.size;
+    public isEmpty = () : boolean => this.size === 0;
     public peekFront = () => this.head;
     public peekBack = () => this.tail;
     public addFront = (node: LinkNode<T>) => {

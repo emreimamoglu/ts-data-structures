@@ -9,6 +9,7 @@ export class LinkedList<T>{
     }
 
     public getSize = (): number => this.size;
+    public isEmpty = () : boolean => this.size === 0;
     public peekHead = (): LinkNode<T> => this.head;
     public peekTail = (): LinkNode<T> => this.tail;
     public addHead = (node: LinkNode<T>): void => {

@@ -133,29 +133,29 @@ export class LinkedList<T>{
 /***************************************************************************************************************/
 
 
-interface Post {
-    id: number,
-    tweet: string
-}
+// interface Post {
+//     id: number,
+//     tweet: string
+// }
 
-const node1 = new LinkNode<Post>({
-    id: 1,
-    tweet: 'emre'
-})
+// const node1 = new LinkNode<Post>({
+//     id: 1,
+//     tweet: 'emre'
+// })
 
-const node2 = new LinkNode<Post>({
-    id: 2,
-    tweet: 'cemre'
-})
+// const node2 = new LinkNode<Post>({
+//     id: 2,
+//     tweet: 'cemre'
+// })
 
-const node3 = new LinkNode<Post>({
-    id: 3,
-    tweet: 'baba'
-})
+// const node3 = new LinkNode<Post>({
+//     id: 3,
+//     tweet: 'baba'
+// })
 
-const linkedList = new LinkedList<Post>(node1, node1);
-linkedList.addTail(node2);
-linkedList.addTail(node3);
-linkedList.deleteNode(2)
-console.log(linkedList)
+// const linkedList = new LinkedList<Post>(node1, node1);
+// linkedList.addTail(node2);
+// linkedList.addTail(node3);
+// linkedList.deleteNode(2)
+// console.log(linkedList)
 //console.log(linkedList.search(({id}) => id === 2));

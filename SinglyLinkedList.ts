@@ -5,6 +5,7 @@ export class LinkNode<T>{
 export class LinkedList<T>{
     private size: number = 0;
     constructor(private head?: LinkNode<T>, private tail?: LinkNode<T>) {
+        if(head)
         this.size++;
     }
 

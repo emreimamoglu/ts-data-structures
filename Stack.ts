@@ -1,6 +1,6 @@
 import { LinkedList, LinkNode } from "./SinglyLinkedList";
 
-class Stack<T>{
+export class Stack<T>{
     private list = new LinkedList<T>();
     private capacity: number = 10;
 

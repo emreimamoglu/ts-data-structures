@@ -4,14 +4,14 @@ export class LinkNode<T>{
 
 export class LinkedList<T>{
     private size: number = 0;
-    constructor(private head: LinkNode<T>, private tail: LinkNode<T>) {
+    constructor(private head?: LinkNode<T>, private tail?: LinkNode<T>) {
         this.size++;
     }
 
     public getSize = (): number => this.size;
     public isEmpty = () : boolean => this.size === 0;
-    public peekHead = (): LinkNode<T> => this.head;
-    public peekTail = (): LinkNode<T> => this.tail;
+    public peekHead = (): LinkNode<T> | undefined => this.head;
+    public peekTail = (): LinkNode<T> | undefined => this.tail;
     public addHead = (node: LinkNode<T>): void => {
         if (!this.head) {
             this.head = node;
@@ -25,27 +25,84 @@ export class LinkedList<T>{
 
     }
     public addTail = (node: LinkNode<T>): void => {
-        this.tail.next = node;
-        this.tail = node;
+        if(this.tail){
+            this.tail.next = node;
+            this.tail = node;
+        }else{
+            this.head = this.tail = node
+        }
         this.size++;
     }
-    public deleteNode = (index: number): void => {
-        let counter: number = 0;
+
+    public removeHead = () => {
+        if(this.isEmpty())
+        return;
+
+        if(this.head && this.head.next){
+            this.head = this.head.next;
+        }else{
+            this.head = undefined;
+        }
+
+        this.size--;
+    }
+
+    public removeTail = () => {
         let start = this.head;
-        let found: LinkNode<T> | undefined = undefined;
+        if(this.head === this.tail){
+            this.head = this.tail = undefined;
+            this.size--;
+            return;
+        }
+        while(start){
+            if(start.next === this.tail){
+                start.next = undefined;
+                this.tail = start;
+                this.size--;
+                return;
+            }
 
-        while (start.next) {
-            if (counter + 1 === index)
-                break;
-
-            counter++;
             start = start.next;
         }
 
-        found = start.next
-        if (found && found.next) {
-            start.next = found.next;
+    }
+
+    public deleteNode = (index: number): void => {
+
+        if(this.isEmpty())
+        return;
+
+        if(index >= index && index < 0)
+        return;
+
+        if(index === 0){
+            this.removeHead();
+            return;
         }
+
+        if(index === this.size - 1){
+            this.removeTail();
+            return;
+        }
+
+        let start = this.head;
+        let prev = null;
+        
+        for(let i = 0; i < index; i++){
+            if(i === index - 1)
+            prev = start
+        }
+
+        if(prev){
+            if(prev.next){
+                prev.next = prev.next.next;
+            }else{
+                prev.next = undefined
+            }
+            this.size--;
+        }
+        
+
     }
 
     public traverse = (): T[] => {
@@ -98,7 +155,7 @@ const node3 = new LinkNode<Post>({
 
 const linkedList = new LinkedList<Post>(node1, node1);
 linkedList.addTail(node2);
-linkedList.addHead(node3);
-// linkedList.deleteNode(1)
-// console.log(linkedList.traverse())
-console.log(linkedList.search(({id}) => id === 2));
+linkedList.addTail(node3);
+linkedList.deleteNode(2)
+console.log(linkedList)
+//console.log(linkedList.search(({id}) => id === 2));
